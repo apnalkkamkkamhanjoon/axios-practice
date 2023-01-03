@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
-const cors = require('cors');
-
+const cors = require("cors");
 
 app.use(cors());
 
@@ -10,24 +9,27 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 
 let id = 2;
 
-const todoList = [
+const user = [
   {
-    id: 1,
-    text: "할일1",
-    done: false,
+    id: "1",
+    email: "string",
+    id: 0,
+    name: "한준"
   },
 ];
 
-app.get("/api/todo", (req, res) => {
-  res.json(todoList);
+app.get("/api/user", (req, res) => {
+  res.json(user);
 });
 
-app.post("/api/todo", (req, res) => {
-  const { text, done } = req.body;
-  todoList.push({
+app.post("/api/user", (req, res) => {
+  const {discord, email, id, name } = req.body;
+  user.push({
     id: id++,
-    text,
-    done,
+    discord,
+    email,
+    id,
+    name,
   });
   return res.send("sucess");
 });
